@@ -1,0 +1,26 @@
+{% extends 'meetups/base.html' %}
+
+{% block title %}Log In{% endblock %}
+
+{% block header_content %}
+    <h1>С возвращением</h1>
+{% endblock %}
+
+{% block body %}
+    <section id="registration">
+        <h2>Войти</h2>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <ul>
+                {{ form.as_ul }}
+            </ul>
+            <div id="registration-actions">
+                <button>Войти</button>
+            </div>
+        </form>
+        <p>
+            Ещё нет аккаунта?
+            <a href="{% url 'register' %}">Зарегистрируйтесь</a>
+        </p>
+    </section>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Митапы Django{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'meetups/styles/base.css' %}">
+    {% block site_css %}{% endblock %}
+</head>
+<body>
+    <header id="main-header">
+        <nav>
+            <a href="{% url 'index' %}" id="main-logo">МИтапы Django</a>
+            <ul>
+                {% if user.is_authenticated %}
+                    <li><span>Hi, {{ user.username }}!</span></li>
+                    <li>
+                        <form action="{% url 'logout' %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" class="nav-button">Log Out</button>
+                        </form>
+                    </li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Войти</a></li>
+                    <li><a href="{% url 'register' %}">Регистрация</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+        {% block header_content %}{% endblock %}
+    </header>
+    <main>
+        {% block body %}{% endblock %}
+    </main>
+</body>
+</html>

@@ -1,0 +1,97 @@
+section {
+    margin-top: 2rem;
+}
+
+section h2 {
+    color: #390281;
+    text-align: center;
+}
+
+ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+    gap: 1.5rem;
+}
+
+.meetup-item {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+}
+
+.meetup-item article {
+    padding: 1rem;
+}
+
+.meetup-summary {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.meetup-image {
+    width: 5rem;
+    height: 5rem;
+    background-color: #d9c7f5;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.meetup-details h3 {
+    margin: 0 0 0.25rem 0;
+    color: #2e2e2e;
+}
+
+.meetup-details address {
+    font-style: italic;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.meetup-actions {
+    text-align: right;
+}
+
+#search-form {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    align-items: center;
+}
+
+#search-form input[type="text"] {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font: inherit;
+}
+
+#search-form button {
+    background-color: #390281;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font: inherit;
+}
+
+#search-form button:hover {
+    background-color: #4f0ba7;
+}
+
+#search-form a {
+    color: #390281;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+#search-form a:hover {
+    text-decoration: underline;
+}

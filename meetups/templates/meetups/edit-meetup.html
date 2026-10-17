@@ -1,0 +1,25 @@
+{% extends 'meetups/base.html' %}
+
+{% block title %}Редактировать: {{ meetup.title }}{% endblock %}
+
+{% block header_content %}
+    <h1>Редактировать: {{ meetup.title }}</h1>
+{% endblock %}
+
+{% block body %}
+    <section id="registration">
+        <h2>Редактировать митап</h2>
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <ul>
+                {{ form.as_ul }}
+            </ul>
+            <div id="registration-actions">
+                <button>Сохранить изменения</button>
+            </div>
+        </form>
+        <p>
+            <a href="{% url 'meetup-detail' meetup.slug %}">Отмена</a>
+        </p>
+    </section>
+{% endblock %}

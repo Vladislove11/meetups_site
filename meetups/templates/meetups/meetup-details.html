@@ -1,0 +1,83 @@
+{% extends 'meetups/base.html' %}
+
+{% block title %}{{ meetup.title }}{% endblock %}
+
+{% block header_content %}
+    <h1>{{ meetup.title }}</h1>
+{% endblock %}
+
+{% block body %}
+    <article>
+        {% if meetup.image %}
+            <img id="main-image" src="{{ meetup.image.url }}" alt="{{ meetup.title }}">
+        {% endif %}
+
+        {% if meetup.date %}
+            <section id="date">
+                <h2>Когда</h2>
+                <p><time datetime="{{ meetup.date|date:'Y-m-d' }}">{{ meetup.date|date:"j F Y" }}</time></p>
+            </section>
+        {% endif %}
+
+        <section id="location">
+            <h2>Где</h2>
+            <address>
+                Митап проходит в  <span>{{ meetup.location.name }}</span>
+                ({{ meetup.location.address }}).
+            </address>
+        </section>
+
+        <section id="description">
+            <h2О митапе</h2>
+            <p>{{ meetup.description }}</p>
+        </section>
+
+        <section id="creator">
+            <p>Организатор: <strong>{{ meetup.creator.username }}</strong></p>
+        </section>
+
+        <section id="participants">
+            <h2>Участники</h2>
+            {% if meetup.participants.all %}
+                <p>Всего участников: <strong>{{ meetup.participants.count }}</strong></p>
+                <ul>
+                    {% for participant in meetup.participants.all %}
+                        <li>{{ participant.email }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>Пока никто не записался. Будьте первым!</p>
+            {% endif %}
+        </section>
+    </article>
+
+    {% if meetup.creator == user %}
+        <section id="edit-actions">
+            <p>
+                <a href="{% url 'edit-meetup' meetup.slug %}" class="btn">Edit Meetup</a>
+            </p>
+        </section>
+    {% endif %}
+
+    <section id="registration">
+        <h2>Присоединиться</h2>
+        {% if is_registered %}
+            <p>Вы уже зарегистрированы на этот митап.</p>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="unregister">
+                <div id="registration-actions">
+                    <button>Отменить регистрацию</button>
+                </div>
+            </form>
+        {% else %}
+            <form action="" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="register">
+                <div id="registration-actions">
+                    <button>Зарегистрироваться</button>
+                </div>
+            </form>
+        {% endif %}
+    </section>  
+{% endblock %}

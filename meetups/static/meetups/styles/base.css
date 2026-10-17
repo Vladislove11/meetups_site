@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@400;700&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: 'Open Sans', 'Lato', sans-serif;
+}
+
+body {
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+#main-header {
+    background-color: #390281;
+    color: white;
+    padding: 2rem 10%;
+    text-align: center;
+}
+
+#main-header h1 {
+    margin: 0;
+}
+
+main {
+    width: 90%;
+    max-width: 40rem;
+    margin: 3rem auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+main h2 {
+    color: #390281;
+}
+
+.btn {
+    display: inline-block;
+    text-decoration: none;
+    color: #390281;
+    background-color: #d9c7f5;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+
+.btn:hover,
+.btn:active {
+    background-color: #390281;
+    color: white;
+}
+
+#main-header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 10%;
+    background-color: #390281;
+    color: white;
+}
+
+#main-logo {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+#main-header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+
+#main-header nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#main-header nav a:hover {
+    color: #cf79f1;
+}
+
+.nav-button {
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+    padding: 0.4rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font: inherit;
+}
+
+.nav-button:hover {
+    background-color: white;
+    color: #390281;
+}

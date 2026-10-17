@@ -1,0 +1,67 @@
+{% extends 'meetups/base.html' %}
+{% load static %}
+
+{% block title %}Все митапы{% endblock %}
+
+{% block site_css %}
+    <link rel="stylesheet" href="{% static 'meetups/styles/all-meetups.css' %}">
+{% endblock %}
+
+{% block header_content %}
+    <p>У нас много интересных митапов!</p>
+{% endblock %}
+
+{% block body %}
+    <section>
+        <h2>Предстоящие митапы</h2>
+
+        <form method="GET" action="" id="search-form">
+            <input
+                type="text"
+                name="q"
+                placeholder="Поиск по названию..."
+                value="{{ query }}"
+            >
+            <button type="submit">Найти</button>
+            {% if query %}
+                <a href="{% url 'index' %}">Сбросить</a>
+            {% endif %}
+        </form>
+
+        {% if query %}
+            <p>Результаты по запросу: <strong>{{ query }}</strong></p>
+        {% endif %}
+
+        {% if show_meetups %}
+            {% if meetups %}
+                <ol>
+                    {% for meetup_item in meetups %}
+                        <li class="meetup-item">
+                            <article>
+                                <div class="meetup-summary">
+                                    <div class="meetup-image"></div>
+                                    <div class="meetup-details">
+                                        <h3>{{ meetup_item.title }}</h3>
+                                        <address>{{ meetup_item.location.name }}</address>
+                                        {% if meetup_item.date %}
+                                            <time datetime="{{ meetup_item.date|date:'Y-m-d' }}">
+                                                {{ meetup_item.date|date:"d M Y" }}
+                                            </time>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="meetup-actions">
+                                    <a href="{% url 'meetup-detail' meetup_item.slug %}" class="btn">Подробнее</a>
+                                </div>
+                            </article>
+                        </li>
+                    {% endfor %}
+                </ol>
+            {% else %}
+                <p>По запросу «{{ query }}» ничего не найдено.</p>
+            {% endif %}
+        {% else %}
+            <p>Митапов пока нет.</p>
+        {% endif %}
+    </section>
+{% endblock %}

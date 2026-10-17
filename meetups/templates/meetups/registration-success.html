@@ -1,0 +1,24 @@
+{% block title %}Вы успешно зарегистрированы!{% endblock %}
+
+{% block header_content %}
+    <h1>Спасибо за регистрацию!</h1>
+{% endblock %}
+
+{% block body %}
+    <section id="confirmation">
+        <h2>Вы успешно зарегистрированы!</h2>
+        <p>Вы записались на <strong>{{ meetup.title }}</strong>.</p>
+        <p>Спасибо за регистрацию - до встречи на митапе!</p>
+        <p>
+            Есть вопросы или не можете прийти?
+            Пожалуйста <a href="mailto:{{ organizer_email }}">свяжитесь с организатором</a> зарание.
+        </p>
+    </section>
+
+    <section id="continue">
+        <p>Конечно вы можете записаться и на другие митапы.</p>
+        <p>
+            <a href="{% url 'index' %}" class="btn">Посмотреть митапы</a>
+        </p>
+    </section>
+{% endblock %}
