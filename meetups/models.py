@@ -6,7 +6,7 @@ class Location(models.Model):
     name = models.CharField(max_length=200, verbose_name="Название")
     address = models.CharField(max_length=300, verbose_name="Адрес")
 
-    def __dir__(self):
+    def __str__(self):
         return f"{self.name} ({self.address})"
 
 class Participant(models.Model):
